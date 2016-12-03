@@ -40,7 +40,7 @@ int j=0;
 @Override
 public void act(float delta) {
 	//setBounds(-20, 0, 3+Gdx.input.getAzimuth()*0.1f, 20);
-	sprite.setBounds(-10, 0, 30-Gdx.input.getAccelerometerZ()*0.5f, 20+ Gdx.input.getAccelerometerZ()*0.5f);
+	sprite.setBounds(-10, 0, 20-Gdx.input.getAccelerometerX()*0.5f, 10+ Gdx.input.getAccelerometerX()*0.5f);
 	setPosition(x, 0);
 	sprite.setPosition(getX(),getY());
 	x+=0.2f;

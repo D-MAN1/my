@@ -16,6 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.*;
 
 public class StartMenu implements Screen{
 
@@ -26,6 +28,7 @@ public class StartMenu implements Screen{
 	Initialize initialize;
 	private TextButton start;
 	private TextButton exit;
+	Sprite sprite;
 	public StartMenu(Initialize initialize) {
 		this.initialize=initialize;
 		 world=new World(new Vector2(0,-10), true);
@@ -34,9 +37,13 @@ public class StartMenu implements Screen{
 
 	@Override
 	public void show() {
+		//Texture texture = new Texture(Gdx.files.external("/screenshot.png"));
+     //   sprite = new Sprite(texture);
+	//	sprite.setBounds(0,0,Gdx.graphics.getWidth()/20,Gdx.graphics.getHeight()/20);
 		//    render= new Box2DDebugRenderer();
 		   start= new TextButton("s t a r t",MyTexture.textButton);
-			start.setBounds(1,Gdx.graphics.getHeight()/20-6, 19, 6);
+		start.setBounds(1,2, 19, 6);
+			
 			start.addListener(new ClickListener(){
 		 @Override
 		public void clicked(InputEvent event, float x, float y) {
@@ -48,7 +55,7 @@ public class StartMenu implements Screen{
 		stage.addActor(start);
 		
 		  exit= new TextButton("e xi t",MyTexture.textButton);
-		  exit.setBounds(1,2, 19, 6);
+		exit.setBounds(1,Gdx.graphics.getHeight()/20-6, 19, 6);
 		  exit.addListener(new ClickListener(){
 		 @Override
 		public void clicked(InputEvent event, float x, float y) {
@@ -66,12 +73,11 @@ public class StartMenu implements Screen{
 		//Log.d(LOG, "render"+delta);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.gl.glClearColor(0, 0, 1, 1);
-		  world.step(delta, 4, 4);
-	     stage.act(delta);
-		  stage.draw();
+		 
 		//  render.render(world, stage.getCamera().combined);
 		
 		  stage.getBatch().begin();
+	//	if(sprite!=null)sprite.draw(stage.getBatch());
 		  if(Data.gameOver){
 			  Data.level=State.LEVEL_1;
 			  Data.score=0;
@@ -89,6 +95,10 @@ public class StartMenu implements Screen{
 		  
 			
 			stage.getBatch().end();
+			
+		world.step(delta, 4, 4);
+		stage.act(delta);
+		stage.draw();
 		}
 	
 

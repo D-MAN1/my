@@ -45,6 +45,8 @@ public class Rat extends Actor{
 		bDef.position.set(getX(),getY());
 		bDef.type=BodyType.DynamicBody;
 		body=world.createBody(bDef);
+		if(Data.level==State.LEVEL_2){	setWidth(2);setHeight(2);}
+		if(Data.level==State.LEVEL_3){	setWidth(1);setHeight(1);}
 	
 		//setName(body.getUserData().toString());
 	//	userData=new Array<String>();
@@ -53,7 +55,7 @@ public class Rat extends Actor{
 		FixtureDef fDef= new FixtureDef();
 		if(Data.level==State.LEVEL_1)	fDef.density=1f;
 		if(Data.level==State.LEVEL_2)	fDef.density=0.8f;
-		if(Data.level==State.LEVEL_3)	fDef.density=0.6f;
+		if(Data.level==State.LEVEL_3)	fDef.density=1f;
 		fDef.restitution=0.3f;
 		fDef.friction=0.9f;
 		
@@ -61,13 +63,19 @@ public class Rat extends Actor{
 	//	PolygonShape shape= new PolygonShape();
 		 //shape.setAsBox(2, 1.5f);
 		CircleShape shape=new CircleShape();
-		shape.setRadius(1.5f);
+		if(Data.level==State.LEVEL_1)	shape.setRadius(1.5f);
+		if(Data.level==State.LEVEL_2)	shape.setRadius(1f);
+		if(Data.level==State.LEVEL_3)	shape.setRadius(0.7f);
+		
 		fDef.shape=shape;
 		Fixture fixture = body.createFixture(fDef);
 	//	Log.d(LOG, "getName="+getName());
 	//	body.setUserData(getName());
 		sprite= new Sprite(MyTexture.atlas2.findRegion("rat"));
-		sprite.setBounds(0, 0, 4, 4);
+		if(Data.level==State.LEVEL_1)	sprite.setBounds(0, 0, 4, 4);
+		if(Data.level==State.LEVEL_2)	sprite.setBounds(0, 0, 2.7f, 2.7f);
+		if(Data.level==State.LEVEL_3)sprite.setBounds(0, 0, 1.5f, 1.5f);
+		
 		body.setFixedRotation(false);
 		body.setUserData("rat");
 		setUserObject(body);
@@ -76,7 +84,7 @@ public class Rat extends Actor{
 		body.setGravityScale(0f);
 		Filter f = new Filter();
 		f.categoryBits=0x0002;
-		f.maskBits= 0x0001 | 0x0004 |0x0008 | 0x00016;  // с какой категорией сталкивается. 0x0001- это категория всех объектов, кому не назначена категория.
+		f.maskBits= 0x0001 | 0x0004 |0x0008 | 0x00016;  // пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. 0x0001- пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 		fixture.setFilterData(f);
 		
 	}

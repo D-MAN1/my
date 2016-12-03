@@ -1,19 +1,6 @@
 package com.example.mygame;
 
-
-
 import java.util.Iterator;
-
-
-
-
-
-
-
-
-
-
-
 
 
 import MyTexture.MyTexture;
@@ -66,7 +53,7 @@ private GameGui gui;
 private float spriteX=1;
 private Joint joint1,joint2,joint3;
 private float timeRat=2;
-private float time1=2f;//частота появления крыс
+private float time1=2f;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 private float timeFly=4f;
 private boolean flag=true;
 private boolean flag1=true;
@@ -320,10 +307,10 @@ if (Data.state== State.PLAY){
 		    jointDef3.bodyB =anchorBody;
 		    jointDef3.localAnchorA.set(0, 1);
 		    jointDef3.localAnchorB.set(1,0);
-		    if(Data.level==State.LEVEL_1) jointDef3.frequencyHz=0.15f;//сила притяжения к объекту
-		    if(Data.level==State.LEVEL_2) jointDef3.frequencyHz=0.2f;//сила притяжения к объекту
-		    if(Data.level==State.LEVEL_3) jointDef3.frequencyHz=0.25f;//сила притяжения к объекту
-		    jointDef3.dampingRatio=0f; //затухания коэффициент
+		    if(Data.level==State.LEVEL_1) jointDef3.frequencyHz=0.15f;//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		    if(Data.level==State.LEVEL_2) jointDef3.frequencyHz=0.2f;//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		    if(Data.level==State.LEVEL_3) jointDef3.frequencyHz=0.25f;//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		    jointDef3.dampingRatio=0f; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		    joint3 = world.createJoint(jointDef3);
 		//    Log.d(LOG,"i="+i);
 		    
